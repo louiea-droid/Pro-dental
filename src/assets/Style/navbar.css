@@ -80,7 +80,7 @@
 
 /* BUTTONS */
 .nav button {
-  background: var(--primary);
+  background: #0a7d8a;
   padding: 12px 24px;
   border-radius: 999px;
   border: none;
