@@ -7,7 +7,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(48px, 6vw, 72px);
-  background: #f2fdff;
+  background: linear-gradient(
+  180deg,
+  #d9f7fb 0%,
+  #ffffff 100%
+);
   align-items: center;
 }
 

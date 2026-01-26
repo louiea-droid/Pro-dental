@@ -1,89 +1,108 @@
+/* NAVBAR BASE */
 .nav {
   position: sticky;
   top: 0;
   z-index: 1000;
-
   height: 80px;
   padding: 0 72px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: white;
-  border-bottom: 1px solid #e5f6f9;
+
+  background: #1e9eaf;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  transition: background 0.35s ease, backdrop-filter 0.35s ease;
 }
 
+/* 🔥 TRANSPARENT SCROLL STATE */
+.nav.scrolling {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
 
+/* 🔥 LINKS TURN BLACK WHEN SCROLLING */
+.nav.scrolling .nav-links,
+.nav.scrolling .nav-links li {
+  color: #0f172a;
+}
+
+/* LOGO */
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 1px;
-  font-weight: 700;
-}
-
-.nav-logo2 {
-  display: flex;
-  justify-content: flex-start;
-  gap: 1px;
-  font-weight: 700;
+  gap: 6px;
 }
 
 .logo-icon {
   width: 80px;
   height: 80px;
-  color: transparent;
   border-radius: 10px;
-  display: grid;
-  place-items: center;
 }
+
 .logo-icon2 {
-  width: 250px;
+  width: 240px;
   height: auto;
-  color: transparent;
-  border-radius: px;
-  display: grid;
-  justify-content: flex-start;
-
 }
 
+/* LINKS */
 .nav-links {
   display: flex;
-  cursor: pointer;
   gap: 36px;
   list-style: none;
   font-weight: 500;
-  color: #334155;
+  cursor: pointer;
+  color: #ffffff;
 }
 
-.nav_links:hover{
-
-
-  border-bottom: 1px solid blue;
+.nav-links li {
+  position: relative;
+  color: inherit;
 }
 
+/* UNDERLINE ANIMATION */
+.nav-links li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
+/* BUTTONS */
 .nav button {
   background: var(--primary);
-
   padding: 12px 24px;
   border-radius: 999px;
   border: none;
   font-weight: 600;
 }
 
-/* HAMBURGER BUTTON */
+/* HAMBURGER */
 .menu-toggle {
   display: none;
   background: none;
   border: none;
   font-size: 22px;
   cursor: pointer;
-}
-.text {
-display: flex;
-flex-direction: column;
-
+  color: white;
 }
 
-/* MOBILE BUTTON VISIBILITY */
+/* CHANGE HAMBURGER COLOR ON SCROLL */
+.nav.scrolling .menu-toggle {
+  color: #0f172a;
+}
+
+/* BUTTON VISIBILITY */
 .desktop-btn {
   display: inline-block;
 }
@@ -118,12 +137,19 @@ flex-direction: column;
     top: 80px;
     left: 0;
     right: 0;
+
     background: white;
     flex-direction: column;
     gap: 24px;
     padding: 32px;
     display: none;
+
     border-bottom: 1px solid #e5f6f9;
+    color: #0f172a;
+  }
+
+  .nav-links li {
+    color: #0f172a;
   }
 
   .nav-links.open {

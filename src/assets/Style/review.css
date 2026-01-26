@@ -17,6 +17,11 @@
  
   font-size: clamp(32px, 5vw, 40px);
   margin: 12px 0 48px;
+  background: linear-gradient(
+  180deg,
+  #d9f7fb 0%,
+  #ffffff 100%
+);
 }
 
 /* GRID */
