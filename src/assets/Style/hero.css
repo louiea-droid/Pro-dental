@@ -8,15 +8,57 @@
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: clamp(48px, 6vw, 80px);
   align-items: center;
-background: linear-gradient(
-  180deg,
-  #d9f7fb 0%,
-  #ffffff 100%
-);
+  background: linear-gradient(
+    180deg,
+    #d9f7fb 0%,
+    #ffffff 100%
+  );
 
+  /* initial hidden state */
+  opacity: 0;
 }
 
-/* TEXT */
+/* =========================
+   INITIAL STATES (BEFORE LOAD)
+========================= */
+
+.hero-text > * {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-image {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* =========================
+   ANIMATION TRIGGER
+========================= */
+
+.hero.hero-animate {
+  opacity: 1;
+}
+
+.hero.hero-animate .hero-text > * {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero.hero-animate .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
+.hero.hero-animate .hero-text > *:nth-child(2) { animation-delay: 0.2s; }
+.hero.hero-animate .hero-text > *:nth-child(3) { animation-delay: 0.3s; }
+.hero.hero-animate .hero-text > *:nth-child(4) { animation-delay: 0.4s; }
+.hero.hero-animate .hero-text > *:nth-child(5) { animation-delay: 0.5s; }
+
+.hero.hero-animate .hero-image {
+  animation: imageZoom 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+/* =========================
+   TEXT
+========================= */
+
 .hero-tag {
   display: inline-block;
   color: var(--primary);
@@ -26,7 +68,6 @@ background: linear-gradient(
 }
 
 .hero h1 {
-  font-family: "Playfair Display", serif;
   font-size: clamp(40px, 6vw, 64px);
   line-height: 1.1;
   margin-bottom: 24px;
@@ -40,7 +81,10 @@ background: linear-gradient(
   font-size: clamp(15px, 1.2vw, 17px);
 }
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
+
 .hero-buttons {
   display: flex;
   gap: 16px;
@@ -55,7 +99,6 @@ background: linear-gradient(
   border-radius: 999px;
   border: none;
   font-weight: 600;
-  white-space: nowrap;
 }
 
 .btn-outline {
@@ -65,10 +108,12 @@ background: linear-gradient(
   border-radius: 999px;
   font-weight: 600;
   color: var(--primary);
-  white-space: nowrap;
 }
 
-/* STATS */
+/* =========================
+   STATS
+========================= */
+
 .hero-stats {
   display: flex;
   gap: clamp(24px, 4vw, 48px);
@@ -85,14 +130,17 @@ background: linear-gradient(
   color: var(--text-muted);
 }
 
-/* IMAGE */
+/* =========================
+   IMAGE
+========================= */
+
 .hero-image {
   display: flex;
   justify-content: center;
 }
 
 .image-box {
-  width: clamp(260px, 35vw, 420px);
+  width: clamp(260px, 35vw, 450px);
   aspect-ratio: 1 / 1;
   background: white;
   border-radius: var(--radius-xl);
@@ -107,10 +155,27 @@ background: linear-gradient(
 }
 
 /* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes imageZoom {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================
    BREAKPOINTS
 ========================= */
 
-/* TABLET */
 @media (max-width: 1024px) {
   .hero {
     grid-template-columns: 1fr;
@@ -122,16 +187,12 @@ background: linear-gradient(
     margin-right: auto;
   }
 
-  .hero-buttons {
-    justify-content: center;
-  }
-
+  .hero-buttons,
   .hero-stats {
     justify-content: center;
   }
 }
 
-/* MOBILE */
 @media (max-width: 640px) {
   .hero-buttons {
     flex-direction: column;
@@ -142,18 +203,6 @@ background: linear-gradient(
   }
 }
 
-/* VERY SMALL PHONES */
-@media (max-width: 360px) {
-  .hero h1 {
-    font-size: 36px;
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-}
-
-/* ULTRA-WIDE / 4K SCREENS */
 @media (min-width: 1600px) {
   .hero {
     max-width: 1600px;
