@@ -60,14 +60,17 @@ export default function Navbar() {
       {/* HAMBURGER */}
       <button className="menu-toggle" onClick={() => setOpen(!open)}>
         {open ? <FaTimes /> : <FaBars />}
+  
+
       </button>
 
       {/* DESKTOP BUTTON */}
       <button
-        className="btn-primary desktop-btn"
-        onClick={() => scrollToSection("contact")}
-      >
-        Book Appointment
+       className ="slice">
+      <span className ="text">Book Appointment</span>
+        
+      
+        
       </button>
     </nav>
   );

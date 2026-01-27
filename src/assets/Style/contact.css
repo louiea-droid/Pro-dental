@@ -55,10 +55,13 @@
   place-items: center;
   font-size: 18px;
   border-radius: 12px;
-
+ 
 }
 
-/* RIGHT SIDE FORM */
+/* =========================
+   RIGHT SIDE FORM
+========================= */
+
 .contact-form {
   background: white;
   border-radius: 28px;
@@ -67,48 +70,176 @@
   box-shadow: 0 30px 80px rgba(229, 243, 252, 0.144);
 }
 
-.contact-form h3 {
-  font-size: clamp(22px, 4vw, 26px);
-  margin-bottom: 28px;
+/* UIVERSE FORM */
+.contact-form .form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 100%;
+  background-color: transparent;
+
+
 }
 
-/* INPUTS */
-.contact-form input,
-.contact-form select {
-  width: 100%;
-  padding: 14px 18px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  margin-bottom: 18px;
-  font-size: 15px;
-  background-color: #818181;
-}
-
-.contact-form input::placeholder {
-  color: #ffffff;
-}
-
-.contact-form select {
-  background: #818181;
-}
-
-/* BUTTON */
-.contact-form button {
-  width: 100%;
-  padding: 16px;
-  background: var(--primary);
-  color: white;
-  border-radius: 999px;
-  border: none;
+/* TITLE */
+.contact-form .title {
+  font-size: 26px;
+  color: var(--primary);
   font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.contact-form .title::before,
+.contact-form .title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0;
+  background-color: var(--primary);
+}
+
+.contact-form .title::after {
+  animation: pulse 1s linear infinite;
+}
+
+/* =========================
+   SCROLL ANIMATION SETUP
+========================= */
+
+.contact .animate-left,
+.contact .animate-right {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* LEFT comes from left */
+.contact .animate-left {
+  transform: translateX(-40px);
+}
+
+/* RIGHT comes from right */
+.contact .animate-right {
+  transform: translateX(40px);
+}
+
+/* WHEN VISIBLE */
+.contact.contact-show .animate-left,
+.contact.contact-show .animate-right {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* STAGGER EFFECT */
+.contact.contact-show .animate-right {
+  transition-delay: 0.15s;
+}
+
+/* MESSAGE & SIGNIN */
+.contact-form .message,
+.contact-form .signin {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.contact-form .signin {
+  text-align: center;
+}
+
+.contact-form .signin a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.contact-form .signin a:hover {
+  text-decoration: underline;
+}
+
+/* FLEX ROW */
+.flex {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+/* LABEL & INPUT */
+.contact-form label {
+  position: relative;
+  width: 100%;
+}
+
+.contact-form label .input {
+  width: 100%;
+  padding: 20px 14px 12px; /* more top padding */
+  border-radius: 12px;
+  border: 1px solid #cacfd6;
+  font-size: 15px;
+  outline: none;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+
+.contact-form label .input + span {
+  position: absolute;
+  left: 14px;
+  top: 16px;
+  color: #64748b;
+  font-size: 0.9em;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+/* FLOATING EFFECT */
+.contact-form label .input:focus + span,
+.contact-form label .input:valid + span {
+  top: 6px;
+  font-size: 0.7em;
+  font-weight: 600;
+  color: var(--primary);
+}
+.contact-form input[type="number"]::-webkit-inner-spin-button,
+.contact-form input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* SUBMIT BUTTON */
+.contact-form .submit {
+  border: none;
+  background-color: var(--primary);
+  padding: 16px;
+  border-radius: 999px;
+  color: #fff;
   font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
   margin-top: 8px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contact-form button:hover {
+.contact-form .submit:hover {
   transform: translateY(-1px);
   box-shadow: 0 12px 30px rgba(14, 165, 183, 0.35);
+}
+
+/* PULSE ANIMATION */
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }
 
 /* =========================
@@ -134,6 +265,10 @@
   .contact-item {
     justify-content: center;
   }
+
+  .flex {
+    flex-direction: column;
+  }
 }
 
 /* =========================
@@ -143,10 +278,6 @@
 @media (max-width: 640px) {
   .contact {
     padding: 64px 24px;
-  }
-
-  .contact-item {
-    justify-content: flex-start;
   }
 
   .contact-form {

@@ -1,6 +1,13 @@
+import { useEffect, useState } from "react";
 import Smile_love from "../assets/Image/smile love.jpg";
 
 export default function Hero() {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setAnimate(true);
+  }, []);
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -9,7 +16,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="hero">
+    <section className={`hero ${animate ? "hero-animate" : ""}`}>
       <div className="hero-text">
         <span className="hero-tag">Your Smile, Our Love</span>
 

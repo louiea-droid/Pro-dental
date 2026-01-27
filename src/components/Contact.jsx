@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import {
   FaPhoneAlt,
   FaMapMarkerAlt,
@@ -5,9 +6,31 @@ import {
 } from "react-icons/fa";
 
 export default function Contact() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.classList.add("contact-show");
+        } else {
+          section.classList.remove("contact-show"); // replay on re-scroll
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="contact" id="contact">
-      <div className="contact-info">
+    <section className="contact" id="contact" ref={sectionRef}>
+      {/* LEFT SIDE */}
+      <div className="contact-info animate-left">
         <span className="section-tag">Get In Touch</span>
         <h2>Ready to Transform Your Smile?</h2>
         <p>
@@ -27,28 +50,63 @@ export default function Contact() {
 
         <div className="contact-item">
           <FaClock className="contact-icon" />
-          <span>Mon–Fri: 8am–6pm</span>
+          <span>Mon–Fri: 8:00am–6:00pm</span>
         </div>
       </div>
 
-      <form className="contact-form">
-        <h3>Book Your Appointment</h3>
+      {/* RIGHT SIDE FORM */}
+      <div className="contact-form animate-right">
+        <form className="form">
+          <p className="title">Book Appointment</p>
 
-        <input type="text" placeholder="Full Name" />
-        <input type="email" placeholder="Email Address" />
-        <input type="tel" placeholder="Phone Number" />
+          <div className="flex">
+            <label>
+              <input required type="text" className="input" />
+              <span>Firstname</span>
+            </label>
 
-        <select>
-          <option>Select a service</option>
-          <option>Dental Implants</option>
-          <option>Emergency Care</option>
-          <option>Pediatric Dentistry</option>
-        </select>
+            <label>
+              <input required type="text" className="input" />
+              <span>Lastname</span>
+            </label>
+          </div>
 
-        <button className="btn-primary">
-          Request Appointment
-        </button>
-      </form>
+          <label>
+            <input required type="email" className="input" />
+            <span>Email</span>
+          </label>
+
+          <label>
+            <input
+              required
+              type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              className="input"
+            />
+            <span>Phone Number</span>
+          </label>
+
+          <label>
+            <select required className="input">
+              <option value=""
+              
+              
+              > </option>
+            
+              <option>Dental Billing & Revenue Management</option>
+              <option>Insurance Verification</option>
+              <option>Patient Scheduling & Support</option>
+              <option>Administrative Support</option>.
+            </select>
+            <span>Select Services</span>
+          </label>
+
+          <button type="submit" className="submit">
+            Submit Appointment
+          </button>
+        </form>
+      </div>
     </section>
   );
 }
