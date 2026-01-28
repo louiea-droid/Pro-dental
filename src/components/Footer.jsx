@@ -40,7 +40,7 @@ export default function Footer() {
         <div>
           <h4>Contact</h4>
           <p>(555) 123-4567</p>
-          <p>info@prodental.com</p>
+          <p>@prodental.com</p>
         </div>
       </div>
 

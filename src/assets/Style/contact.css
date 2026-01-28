@@ -55,7 +55,6 @@
   place-items: center;
   font-size: 18px;
   border-radius: 12px;
- 
 }
 
 /* =========================
@@ -106,41 +105,6 @@
 
 .contact-form .title::after {
   animation: pulse 1s linear infinite;
-}
-
-/* =========================
-   SCROLL ANIMATION SETUP
-========================= */
-
-.contact .animate-left,
-.contact .animate-right {
-  opacity: 0;
-  transform: translateY(40px);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* LEFT comes from left */
-.contact .animate-left {
-  transform: translateX(-40px);
-}
-
-/* RIGHT comes from right */
-.contact .animate-right {
-  transform: translateX(40px);
-}
-
-/* WHEN VISIBLE */
-.contact.contact-show .animate-left,
-.contact.contact-show .animate-right {
-  opacity: 1;
-  transform: translateX(0) translateY(0);
-}
-
-/* STAGGER EFFECT */
-.contact.contact-show .animate-right {
-  transition-delay: 0.15s;
 }
 
 /* MESSAGE & SIGNIN */

@@ -37,7 +37,7 @@ export default function Contact() {
           Schedule your appointment today and take the first step
           towards a healthier smile.
         </p>
-
+<div className="icon-container"> 
         <div className="contact-item">
           <FaPhoneAlt className="contact-icon" />
           <span>(555) 123-4567</span>
@@ -48,10 +48,13 @@ export default function Contact() {
           <span>123 Smile Street, Suite 100</span>
         </div>
 
+        
+
         <div className="contact-item">
           <FaClock className="contact-icon" />
           <span>Mon–Fri: 8:00am–6:00pm</span>
         </div>
+      </div>
       </div>
 
       {/* RIGHT SIDE FORM */}
@@ -87,24 +90,21 @@ export default function Contact() {
             <span>Phone Number</span>
           </label>
 
-          <label>
-            <select required className="input">
-              <option value=""
-              
-              
-              > </option>
-            
-              <option>Dental Billing & Revenue Management</option>
-              <option>Insurance Verification</option>
-              <option>Patient Scheduling & Support</option>
-              <option>Administrative Support</option>.
-            </select>
-            <span>Select Services</span>
-          </label>
+        <label className="select-wrapper">
+  <select required className="input">
+    <option value="" ></option>
+    <option>Dental Billing & Revenue Management</option>
+    <option>Insurance Verification</option>
+    <option>Patient Scheduling & Support</option>
+    <option>Administrative Support</option>
+  </select>
+  <span>Select Services</span>
+</label>
 
-          <button type="submit" className="submit">
-            Submit Appointment
-          </button>
+<button type="submit" className="submit">
+  Submit Appointment
+</button>
+
         </form>
       </div>
     </section>
