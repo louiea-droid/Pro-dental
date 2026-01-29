@@ -14,9 +14,25 @@ export default function Hero() {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+useEffect(() => {
+  const handleScroll = () => {
+    const offset = window.scrollY * 0.15;
+    document.documentElement.style.setProperty(
+      "--bg-offset",
+      `${offset}px`
+    );
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   return (
-    <section className={`hero ${animate ? "hero-animate" : ""}`}>
+    <section id="hero" className={`hero ${animate ? "hero-animate" : ""}`}>
+      
+      {/* 🔹 MOVING CLINIC BACKGROUND */}
+      <div className="hero-bg" />
+
       <div className="hero-text">
         <span className="hero-tag">Your Smile, Our Love</span>
 
@@ -33,14 +49,11 @@ export default function Hero() {
         </p>
 
         <div className="hero-buttons">
-          <button className="btn-primary">
+          <button className="btn-primary" onClick={() => scrollToSection("contact")}>
             Schedule Visit →
           </button>
 
-          <button
-            className="btn-outline"
-            onClick={() => scrollToSection("services")}
-          >
+          <button className="btn-outline" onClick={() => scrollToSection("services")}>
             Our Services
           </button>
         </div>

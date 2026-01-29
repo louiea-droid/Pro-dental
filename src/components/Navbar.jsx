@@ -34,10 +34,16 @@ export default function Navbar() {
     }
   };
 
+  const handleLogoClick = () => {
+    // Scroll to hero/home section
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setOpen(false);
+  };
+
   return (
     <nav className={`nav ${isScrolling ? "scrolling" : ""}`}>
       {/* LOGO */}
-      <div className="nav-logo">
+      <div className="nav-logo" onClick={handleLogoClick} style={{ cursor: "pointer" }}>
         <img src={dental_logo} className="logo-icon" alt="Dental Logo" />
         <img src={dental_logo2} className="logo-icon2" alt="Dental Name" />
       </div>
@@ -66,8 +72,10 @@ export default function Navbar() {
 
       {/* DESKTOP BUTTON */}
       <button
-       className ="slice">
-      <span className ="text">Book Appointment</span>
+       className="slice"
+       onClick={() => scrollToSection("contact")}
+      >
+      <span className="text">Book Appointment</span>
         
       
         

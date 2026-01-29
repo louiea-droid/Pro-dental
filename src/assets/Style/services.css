@@ -115,6 +115,39 @@
   text-decoration: underline;
 }
 
+
+/* HOVER LIFT + GLOW */
+.benefit-card:hover {
+  transform: scale(1.04) !important;
+  box-shadow:
+    0 20px 40px rgba(14, 165, 183, 0.25),
+    0 0 0 1px rgba(14, 165, 183, 0.25);
+  background: #ffffff;
+
+
+}
+
+/* subtle glow */
+.benefit-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(14, 165, 183, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+
+}
+
+.benefit-card:hover::after {
+  opacity: 1;
+  
+}
+
 /* =========================
    ANIMATION
 ========================= */

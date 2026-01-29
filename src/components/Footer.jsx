@@ -37,10 +37,13 @@ export default function Footer() {
           <p onClick={() => scrollToSection("contact")}>Contact</p>
         </div>
 
-        <div>
-          <h4>Contact</h4>
+        <div className="containerFoot">
+          <h4> Support</h4>
+          <h4>Contact</h4> 
           <p>(555) 123-4567</p>
           <p>@prodental.com</p>
+          
+        
         </div>
       </div>
 
