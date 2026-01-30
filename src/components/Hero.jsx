@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Smile_love from "../assets/Image/smile love.jpg";
+import Smile_love from "../assets/Image/deent.jpg";
 
 export default function Hero() {
   const [animate, setAnimate] = useState(false);
@@ -34,8 +34,10 @@ useEffect(() => {
       <div className="hero-bg" />
 
       <div className="hero-text">
-        <span className="hero-tag">Your Smile, Our Love</span>
 
+        <div className="containerHero-section-tag">
+        <span className="hero-tag">Your Smile, Our Love</span>
+          </div>
         <h1>
           Beautiful Smiles
           <br />
@@ -74,11 +76,15 @@ useEffect(() => {
         </div>
       </div>
 
-      <div className="hero-image">
-        <div className="image-box">
-          <img src={Smile_love} alt="Dental care" />
-        </div>
-      </div>
+ <div className="hero-image">
+  <div className="card">
+    <div className="card2 image-box">
+      <img src={Smile_love} alt="Dental care" />
+    </div>
+  </div>
+</div>
+
+
     </section>
   );
 }
