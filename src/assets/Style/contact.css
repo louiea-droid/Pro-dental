@@ -38,6 +38,27 @@
   max-width: 460px;
   font-size: clamp(15px, 1.5vw, 16px);
 }
+.containerSection-tag {
+  
+  width: 140px;
+  height: 30px;
+  background-color: #529ec7;
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+
+.section-tag{
+color: #fdfdfd !important;
+  font-weight: 600;
+  
+  
+}
 
 /* CONTACT DETAILS */
 .contact-item {
@@ -49,6 +70,7 @@
 }
 
 .contact-icon {
+  
   min-width: 40px;
   height: 40px;
   display: grid;

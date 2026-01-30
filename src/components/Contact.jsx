@@ -2,7 +2,8 @@ import { useEffect, useRef } from "react";
 import {
   FaPhoneAlt,
   FaMapMarkerAlt,
-  FaClock
+  FaClock,
+  FaEnvelope
 } from "react-icons/fa";
 
 export default function Contact() {
@@ -29,9 +30,13 @@ export default function Contact() {
 
   return (
     <section className="contact" id="contact" ref={sectionRef}>
+     
       {/* LEFT SIDE */}
       <div className="contact-info animate-left">
+
+        <div className="containerSection-tag">
         <span className="section-tag">Get In Touch</span>
+        </div>
         <h2>Ready to Transform Your Smile?</h2>
         <p>
           Schedule your appointment today and take the first step
@@ -42,12 +47,17 @@ export default function Contact() {
           <FaPhoneAlt className="contact-icon" />
           <span>(555) 123-4567</span>
         </div>
-
+        
+        <div className="contact-item">
+          <FaEnvelope className="contact-icon" />
+          <span>info@prodental.com</span>
+        </div>
         <div className="contact-item">
           <FaMapMarkerAlt className="contact-icon" />
           <span>123 Smile Street, Suite 100</span>
         </div>
-
+        
+       
         
 
         <div className="contact-item">
