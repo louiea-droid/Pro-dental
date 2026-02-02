@@ -27,8 +27,13 @@
 /* 🔥 LINKS TURN BLACK WHEN SCROLLING */
 .nav.scrolling .nav-links,
 .nav.scrolling .nav-links li {
-  color: #0f172a;
+  color: #0a7d8a;
+
 }
+
+
+
+
 
 /* LOGO */
 .nav-logo {
@@ -87,6 +92,8 @@
   border: none;
   font-weight: 600;
 }
+
+
 
 /* =========================
    RESPONSIVE SLICE BUTTON
@@ -154,6 +161,19 @@
 .slice:active {
   transform: scale(0.97);
   filter: brightness(0.9);
+}
+
+/* =========================
+   ACTIVE LINK (SCROLL STATE)
+========================= */
+
+.nav-links li.active::after {
+  width: 100%;
+}
+
+/* keep color consistent with scroll state */
+.nav.scrolling .nav-links li.active {
+  color: #0a7d8a;
 }
 
 

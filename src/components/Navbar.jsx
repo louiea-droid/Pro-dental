@@ -5,9 +5,11 @@ import dental_logo2 from "../assets/Image/2.png";
 import "../assets/Style/navbar.css";
 
 export default function Navbar() {
+  
   const [open, setOpen] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeout = useRef(null);
+const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,8 +41,34 @@ export default function Navbar() {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setOpen(false);
   };
+useEffect(() => {
+  const sections = ["services", "about", "reviews", "contact"];
+
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    },
+    {
+      threshold: 0.6, // section must be mostly visible
+    }
+  );
+
+  sections.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  return () => observer.disconnect();
+}, []);
 
   return (
+
+    
     <nav className={`nav ${isScrolling ? "scrolling" : ""}`}>
       {/* LOGO */}
       <div className="nav-logo" onClick={handleLogoClick} style={{ cursor: "pointer" }}>
@@ -50,10 +78,20 @@ export default function Navbar() {
 
       {/* LINKS */}
       <ul className={`nav-links ${open ? "open" : ""}`}>
-        <li onClick={() => scrollToSection("services")}>Services</li>
-        <li onClick={() => scrollToSection("about")}>About</li>
-        <li onClick={() => scrollToSection("reviews")}>Benefits</li>
-        <li onClick={() => scrollToSection("contact")}>Contact</li>
+     
+         <li 
+        className={`serv ${activeSection === "services" ? "active" : ""}`}
+        onClick={() => scrollToSection("services")}>Services</li>
+    
+        <li 
+        className={`abt ${activeSection === "about" ? "active" : ""}`}
+        onClick={() => scrollToSection("about")}>About</li>
+        <li 
+        className={`rev ${activeSection === "reviews" ? "active" : ""}`} 
+        onClick={() => scrollToSection("reviews")}>Benefits</li>
+        <li
+        className={`cont ${activeSection === "contact" ? "active" : ""}`} 
+        onClick={() => scrollToSection("contact")}>Contact</li>
 
         <button
           className="btn-primary mobile-btn"

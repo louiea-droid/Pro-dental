@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Smile_love from "../assets/Image/deent.jpg";
+import Smile_love from "../assets/Image/deent.webp";
+import HeroBgImage from "../assets/Image/3.webp";
 
 export default function Hero() {
   const [animate, setAnimate] = useState(false);
@@ -28,10 +29,15 @@ useEffect(() => {
 }, []);
 
   return (
+    <div className="Home-background"
+    >
+
+    
     <section id="hero" className={`hero ${animate ? "hero-animate" : ""}`}>
       
       {/* 🔹 MOVING CLINIC BACKGROUND */}
-      <div className="hero-bg" />
+      <div className="hero-bg" 
+       style={{ backgroundImage: `url(${HeroBgImage})` }}/>
 
       <div className="hero-text">
 
@@ -86,5 +92,6 @@ useEffect(() => {
 
 
     </section>
+    </div>
   );
 }
